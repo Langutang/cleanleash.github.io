@@ -14,7 +14,7 @@ body {
   padding: 0;
   font-size: 16px;
   font-family: 'Raleway', sans-serif;
-  background: #fffc0c;
+  background: #ffffcc;
   color: #ddd;
 }
 
@@ -136,7 +136,7 @@ img {
   navbar
 ---------------------------------*/
 .navbar {
-  background: #fffc0c;
+  background: #ffffcc;
   padding: 25px 0;
   position: fixed;
   width: 100%;
