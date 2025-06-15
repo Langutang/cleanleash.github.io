@@ -14,7 +14,7 @@ body {
   padding: 0;
   font-size: 16px;
   font-family: 'Raleway', sans-serif;
-  background: #fffc92;
+  background: #fffc0c;
   color: #ddd;
 }
 
@@ -136,7 +136,7 @@ img {
   navbar
 ---------------------------------*/
 .navbar {
-  background: #fffc92;
+  background: #fffc0c;
   padding: 25px 0;
   position: fixed;
   width: 100%;
@@ -298,7 +298,7 @@ img {
 }
 .about-info .content h5,
 .about-info .content p {
-  color: #fff;
+  color: #abedf4;
 }
 .about-info .content p {
   font-weight: 500;
