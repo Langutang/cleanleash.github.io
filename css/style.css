@@ -599,3 +599,8 @@ footer .cp {
 .container h2 {
   color: #abedf4;
 }
+
+.form-control-custom-width {
+  width: 33.33% !important;
+  margin: 0 auto !important;
+}

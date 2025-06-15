@@ -35,7 +35,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ms-auto">
                       <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#">The WagBag</a></li>
+                      <li class="nav-item"><a class="nav-link" href="product.html">The WagBag</a></li>
                       <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                   </ul>
               </div>
@@ -50,7 +50,8 @@
               <div class="row align-items-center">
                   <div class="col-md-12">
                       <div class="content">
-                        <h1>Look forward to your Great, <span>Clean</span> Choice</h1>
+                        <h2>Preorder Your WagBag</h2>
+                        <p class="preorder-text">Enter your email below to be notified when Preorders open!</p>
                       </div>
                   </div>
               </div>
@@ -58,15 +59,29 @@
       </div>
       <div class="container" style="text-align: center;">
         <img src="img/bottle.png" alt="WagBag Bottle" style="width: 30%; margin-bottom: 30px;">
-        <h2>Preorder Your WagBag</h2>
-        <p class="preorder-text">Enter your email below to be notified when Preorders open!</p>
-        <form action="https://formspree.io/f/mqabbdlg" method="POST" style="max-width: 500px; margin: 0 auto;">
-            <div class="mb-3">
-                <label for="email" class="preorder-text">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-4">
+              <h2 class="text-4xl font-extrabold text-gray-800">Let's Get you Clean</h2>
             </div>
-            <button type="submit" class="button">Submit</button>
-        </form>
+      
+            <form class="grid grid-cols-1 gap-6 w-1/3 mx-auto" action="https://formspree.io/f/mqabbdlg" method="POST">
+      
+                <div class="mb-3">
+                    <label for="email" class="preorder-text">Email address</label>
+                    <input type="email" class="form-control form-control-custom-width" id="email" aria-describedby="emailHelp" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="message" class="preorder-text">Message</label>
+                    <textarea name="message" class="form-control form-control-custom-width" id="message" rows="3" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="button product-page-button">Send Message</button>
+                </div>
+      
+            </form>
+          </div>
     </div>
 
 		<!-- script -->
