@@ -13,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   background: #ffffcc;
   color: #ddd;
 }
@@ -24,10 +24,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   padding: 0;
   margin: 0;
-  color: #8c7258;
+  color: #f27f70;
 }
 
 h1 {
@@ -64,7 +64,7 @@ h6 {
 
 a {
   text-decoration: none;
-  color: #464646;
+  color: #f27f70;
 }
 
 a:hover {
@@ -111,7 +111,7 @@ img {
 }
 
 .loader .loading .aloader {
-  background: #8c7258;
+  background: #f27f70;
 }
 
 /* ------------------------------
@@ -151,7 +151,7 @@ img {
   font-weight: 700;
   font-size: 2.25rem;
   line-height: 2.5rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .navbar .navbar-brand span {
@@ -159,7 +159,7 @@ img {
 }
 
 .navbar .navbar-brand:hover {
-  color: #333333;
+  color: #f27f70;
 }
 
 .navbar .navbar-toggler {
@@ -185,7 +185,7 @@ img {
 }
 
 .navbar .navbar-nav li a {
-  color: #8c7258;
+  color: #f27f70;
 }
 
 .navbar .navbar-nav li a:hover {
@@ -248,7 +248,7 @@ img {
   margin: 0;
 }
 .intro .content p {
-  color: #8c7258;
+  color: #f27f70;
   font-size: 20px;
 }
 .intro .button-container {
@@ -268,7 +268,7 @@ img {
 ---------------------------------*/
 .clients {
   padding: 70px 0;
-  background: #8c7258;
+  background: #f27f70;
 }
 
 /* ------------------------------
@@ -288,7 +288,7 @@ img {
 
 .about-info {
   text-align: center;
-  background: #8c7258;
+  background: #f27f70;
   padding: 50px 0;
 }
 .about-info .content i {
@@ -313,7 +313,7 @@ img {
   features-section
 ---------------------------------*/
 .features-section {
-  background: #8c7258;
+  background: #f27f70;
   padding: 100px 0;
 }
 .features-section .feature-item {
@@ -357,7 +357,7 @@ img {
   margin-top: -40px;
 }
 .display .content p {
-  color: #8c7258;
+  color: #f27f70;
 }
 
 /* ------------------------------
@@ -369,7 +369,7 @@ img {
 .testimonial .swiper .content {
   text-align: center;
   padding: 32px 25%;
-  color: #8c7258;
+  color: #f27f70;
 }
 .testimonial .swiper .content span {
   font-weight: 600;
@@ -447,7 +447,7 @@ footer .social li i {
   border-radius: 50%;
   font-size: 12px;
   margin-right: 14px;
-  color: #8c7258;
+  color: #f27f70;
 }
 footer .social li i:hover {
   color: #fff;
@@ -466,7 +466,7 @@ footer .link-footer li a {
   color: #ddd;
 }
 footer .link-footer li a:hover {
-  color: #8c7258;
+  color: #f27f70;
 }
 footer .content {
   position: relative;
@@ -477,7 +477,7 @@ footer .content .icon {
   margin-right: 10px;
 }
 footer .content .icon i {
-  color: #8c7258;
+  color: #f27f70;
   font-size: 20px;
   margin-top: 10px;
 }
@@ -524,7 +524,7 @@ footer .cp {
     border-radius: 50%;
     font-size: 26px;
     margin-right: 14px;
-    color: #8c7258;
+    color: #f27f70;
   }
 }
 @media (max-width: 767px) {
