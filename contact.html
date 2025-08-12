@@ -1,60 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Clean Leash Co.</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-</head>
-<body class="bg-gray-50 font-sans">
-  <header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-gray-800">Clean Leash</h1>
-      <nav>
-        <a href="index.html" class="text-gray-600 hover:text-black mx-4">Home</a>
-        <a href="product.html" class="text-gray-600 hover:text-black mx-4">Products</a>
-        <a href="contact.html" class="text-black font-semibold mx-4">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-extrabold text-gray-800">Let’s Get you Clean</h2>
-        <p class="mt-4 text-lg text-gray-600">Whether you have questions about our products or just want to say hello, we’d love to hear from you.</p>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<title>Contact Us - Clean Leash Company</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/line-awesome.min.css">
+		<link rel="stylesheet" href="css/magnific-popup.css">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		
+		<!-- loader -->
+		<div class="loader">
+            <div class="loading">
+              <div class="spinner-grow aloader" role="status">
+                    <span class="sr-only"></span>
+              </div>
+          </div>
       </div>
+      <!-- end loader -->
 
-      <form class="grid grid-cols-1 md:grid-cols-2 gap-6" action="https://formspree.io/f/myzjjdpo" method="POST">
-        <div>
-          <label class="block mb-2 text-sm font-medium text-gray-700">First Name</label>
-          <input type="text" name="first_name" class="w-full p-3 border border-gray-300 rounded-md" required />
-        </div>
 
-        <div>
-          <label class="block mb-2 text-sm font-medium text-gray-700">Last Name</label>
-          <input type="text" name="last_name" class="w-full p-3 border border-gray-300 rounded-md" required />
-        </div>
+      <!-- navbar -->
+      <div id="navbar" class="navbar navbar-expand-lg">
+          <div class="container">
+              <a href="#" class="navbar-brand"><img src="img/logo.png" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="la la-bars"></i>
+              </button>
 
-        <div class="md:col-span-2">
-          <label class="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
-          <input type="email" name="email" class="w-full p-3 border border-gray-300 rounded-md" required />
-        </div>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto">
+                      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="preorder.html">Shop</a></li>
+                      <li class="nav-item"><a class="nav-link" href="how-it-works.html">How it Works</a></li>
+                      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <!-- end navbar -->
 
-        <div class="md:col-span-2">
-          <label class="block mb-2 text-sm font-medium text-gray-700">Message</label>
-          <textarea name="message" rows="5" class="w-full p-3 border border-gray-300 rounded-md" placeholder="How can we help you?" required></textarea>
-        </div>
 
-        <div class="md:col-span-2 text-center">
-          <button type="submit" class="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition">Send Message</button>
-        </div>
-      </form>
+      <!-- intro -->
+      <div id="home" class="intro" style="padding: 100px 0 20px;">
+          <div class="container">
+              <div class="row align-items-center">
+                  <div class="col-md-12">
+                      <div class="content">
+                        <h2>Contact Us</h2>
+                        <p class="preorder-text">LET'S GET YOU CLEAN</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+      </div>
+      <div class="container" style="text-align: center; margin-top: -20px;">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center">
+              <h2 class="text-4xl font-extrabold text-gray-800">Whether you have questions about our products or just want to say hello, we'd love to hear from you.</h2>
+            </div>
+      
+            <form class="grid grid-cols-1 gap-6 w-1/2 mx-auto" action="https://formspree.io/f/myzjjdpo" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="first_name" class="preorder-text" style="color: #000;">First Name</label>
+                        <input type="text" name="first_name" class="form-control" id="first_name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="last_name" class="preorder-text" style="color: #000;">Last Name</label>
+                        <input type="text" name="last_name" class="form-control" id="last_name" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="preorder-text" style="color: #000;">Email Address</label>
+                    <input type="email" name="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="message" class="preorder-text" style="color: #000;">Message</label>
+                    <textarea name="message" class="form-control" id="message" rows="8" placeholder="How can we help you?" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="button product-page-button">Send Message</button>
+                </div>
+            </form>
+          </div>
     </div>
-  </section>
 
-  <footer class="bg-gray-100 text-center py-6 text-sm text-gray-500">
-    © 2025 Clean Leash Company. All rights reserved.
-  </footer>
-</body>
+    <!-- footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="img/logo.png" alt="">
+            <ul class="social">
+              <li><a href=""><i class="la la-facebook"></i></a></li>
+              <li><a href=""><i class="la la-twitter"></i></a></li>
+              <li><a href=""><i class="la la-instagram"></i></a></li>
+              <li><a href=""><i class="la la-youtube"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-md">
+            <h6>Useful Link</h6>
+            <ul class="link-footer">
+              <li><a href="#home">Home</a></li>
+              <li><a href="preorder.html">The WagBag</a></li>
+              <li><a href="contact.html">Contact us</a></li>
+            </ul>
+          </div>
+          <div class="col-md">
+            <h6>Get in touch</h6>
+            <div class="content">
+              <div class="icon"><i class="la la-phone"></i></div>
+              <div class="text">
+                <span>Phone</span>
+                <p>+1 800 326 0519 </p>
+              </div>
+            </div>
+            <div class="content">
+              <div class="icon"><i class="la la-envelope"></i></div>
+              <div class="text">
+                <span>Email</span>
+                <p>product@cleanleashcompany.com </p>
+              </div>
+            </div>
+            <div class="content">
+              <div class="icon"><i class="la la-map"></i></div>
+              <div class="text">
+                <span>Instagram</span>
+                <p> @cleanleashcompany </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="cp">
+              <span>Copyright © All Right Reserved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end footer -->
+
+		<!-- script -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/magnific-popup.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/main.js"></script>
+		
+	</body>
 </html>

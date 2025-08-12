@@ -79,4 +79,24 @@
 
   });
 
+  // Slide-in animation on scroll
+  function handleSlideIn() {
+    const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-right');
+    
+    slideElements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150;
+      
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.classList.add('animate');
+      }
+    });
+  }
+
+  // Add scroll event listener
+  window.addEventListener('scroll', handleSlideIn);
+
+  // Initial check for elements already in view
+  document.addEventListener('DOMContentLoaded', handleSlideIn);
+
 })();

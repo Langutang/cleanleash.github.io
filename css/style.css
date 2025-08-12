@@ -139,6 +139,8 @@ img {
   background: #ffffcc;
   padding: 25px 0;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   z-index: 99;
 }
@@ -185,7 +187,7 @@ img {
 }
 
 .navbar .navbar-nav li a {
-  color: #f27f70;
+  color: #000 !important;
 }
 
 .navbar .navbar-nav li a:hover {
@@ -229,6 +231,7 @@ img {
 ---------------------------------*/
 .intro {
   padding: 160px 0 100px;
+  background: #ffffcc;
 }
 .intro h1 span {
   color: #abedf4;
@@ -267,8 +270,8 @@ img {
   clients
 ---------------------------------*/
 .clients {
-  padding: 70px 0;
-  background: #f27f70;
+  padding: 2px 0;
+  background: #ffffcc;
 }
 
 /* ------------------------------
@@ -288,7 +291,7 @@ img {
 
 .about-info {
   text-align: center;
-  background: #f27f70;
+  background: #ffffcc;
   padding: 50px 0;
 }
 .about-info .content i {
@@ -313,7 +316,7 @@ img {
   features-section
 ---------------------------------*/
 .features-section {
-  background: #f27f70;
+  background: #ffffcc;
   padding: 100px 0;
 }
 .features-section .feature-item {
@@ -358,6 +361,9 @@ img {
 }
 .display .content p {
   color: #f27f70;
+}
+.display, .display h2, .display p, .display .content {
+  color: #000 !important;
 }
 
 /* ------------------------------
@@ -405,12 +411,15 @@ img {
 .process .content p {
   color: #abedf4;
 }
+.process, .process h2, .process h1, .process h5, .process p, .process .content {
+  color: #000 !important;
+}
 
 /* ------------------------------
   footer
 ---------------------------------*/
 footer {
-  background: #abedf4;
+  background: #ffffcc;
   padding: 100px 0 25px;
 }
 footer iframe {
@@ -496,6 +505,27 @@ footer .content .text p {
 footer .cp {
   text-align: center;
   margin-top: 60px;
+}
+
+/* ------------------------------
+  slide-in animations
+---------------------------------*/
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-left.animate,
+.slide-in-right.animate {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ------------------------------
@@ -603,4 +633,12 @@ footer .cp {
 .form-control-custom-width {
   width: 33.33% !important;
   margin: 0 auto !important;
+}
+
+.about, .about h2, .about p, .about .content, .about .content-right {
+  color: #000 !important;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: #000 !important;
 }
