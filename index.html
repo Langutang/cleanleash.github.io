@@ -58,6 +58,7 @@
 				transform: translate(-50%, -50%) scale(0);
 				opacity: 0;
 				transition: all 0.8s ease-in-out 0.5s;
+				pointer-events: none;
 			}
 			
 			.final-text.show {
@@ -389,11 +390,11 @@
 						text.classList.add('explode');
 					});
 					
-					// Show final text after explosion
+					// Show final text after explosion animation completes
 					setTimeout(function() {
 						const finalText = document.querySelector('.final-text');
 						finalText.classList.add('show');
-					}, 800);
+					}, 1200); // Increased delay to ensure initial text is completely gone
 				}
 				
 				// Reset animation when scrolled back to top
@@ -411,7 +412,7 @@
 							explodingTexts.forEach(function(text) {
 								text.classList.remove('explode');
 							});
-						}, 800); // Wait for final text transition to complete
+						}, 1200); // Wait for final text transition to complete
 					}, 3000); // 3 seconds
 				}
 				
