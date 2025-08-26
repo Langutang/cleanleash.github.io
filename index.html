@@ -10,6 +10,140 @@
 		<link rel="stylesheet" href="css/magnific-popup.css">
 		<link rel="stylesheet" href="css/swiper.min.css">
 		<link rel="stylesheet" href="css/style.css">
+		<style>
+			.exploding-header {
+				position: relative;
+				height: 200px;
+				overflow: hidden;
+				margin-bottom: 20px;
+			}
+			
+			.text-container {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				text-align: center;
+				transition: all 0.8s ease-in-out;
+			}
+			
+			.exploding-text {
+				display: block;
+				font-size: 3rem;
+				font-weight: bold;
+				margin: 10px 0;
+				transition: all 0.8s ease-in-out;
+				opacity: 1;
+				transform: translateY(0) scale(1);
+				color: #000;
+			}
+			
+			.exploding-text.explode {
+				opacity: 0;
+				transform: translateY(-100px) scale(0.5);
+			}
+			
+			.exploding-text#weAre.explode {
+				transform: translateY(-150px) translateX(-200px) scale(0.3);
+			}
+			
+			.exploding-text#essentials.explode {
+				transform: translateY(-150px) translateX(200px) scale(0.3);
+			}
+			
+			.final-text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%) scale(0);
+				opacity: 0;
+				transition: all 0.8s ease-in-out 0.5s;
+			}
+			
+			.final-text.show {
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1);
+			}
+			
+			.final-text h1 {
+				font-size: 4rem;
+				font-weight: bold;
+				margin: 0;
+			}
+			
+			.final-text span {
+				color: #abedf4;
+			}
+			
+			.clean-leash-blue {
+				color: #abedf4 !important;
+			}
+			
+			/* Footer contact info styling */
+			.about-info .content p,
+			footer .content .text span {
+				color: #abedf4 !important;
+			}
+			
+			/* Image fly-in/fly-out animations */
+			.fly-in-image {
+				opacity: 0;
+				transform: translateY(100px) scale(0.8);
+				transition: all 0.8s ease-out;
+			}
+			
+			.fly-in-image.fly-in {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+			
+			.fly-in-image.fly-out {
+				opacity: 0;
+				transform: translateY(-100px) scale(0.8);
+			}
+			
+			/* Different directions for variety */
+			.fly-in-left {
+				transform: translateX(-100px) scale(0.8);
+			}
+			
+			.fly-in-left.fly-in {
+				transform: translateX(0) scale(1);
+			}
+			
+			.fly-in-left.fly-out {
+				transform: translateX(100px) scale(0.8);
+			}
+			
+			.fly-in-right {
+				transform: translateX(100px) scale(0.8);
+			}
+			
+			.fly-in-right.fly-in {
+				transform: translateX(0) scale(1);
+			}
+			
+			.fly-in-right.fly-out {
+				transform: translateX(-100px) scale(0.8);
+			}
+			
+			/* Text fly-in animations */
+			.fly-in-text {
+				opacity: 0;
+				transform: translateY(50px) scale(0.9);
+				transition: all 0.8s ease-out;
+			}
+			
+			.fly-in-text.fly-in {
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+			
+			.fly-in-text.fly-out {
+				opacity: 0;
+				transform: translateY(-50px) scale(0.9);
+			}
+		</style>
 
 	</head>
 	<body>
@@ -52,13 +186,20 @@
 				<div class="row align-items-center">
 					<div class="col-md-12">
 						<div class="content">
-							<h1>We Are <span>Clean Leash</span></h1>
-								<br><h2>The Essentials For Every Walk</h2>
-							<br><br>
+							<div class="exploding-header">
+								<div class="text-container">
+									<span class="exploding-text" id="weAre">We Are <span class="clean-leash-blue">Clean Leash</span></span>
+									<span class="exploding-text" id="essentials">The Essentials For Every Walk</span>
+								</div>
+								<div class="final-text">
+									<h1><span class="clean-leash-blue">Clean Leash</span></h1>
+								</div>
+							</div>
+							<br>
 						</div>
 					</div>
 					<div style="width: 75%; margin: 0 auto; border-radius: 12px; overflow: hidden;">
-						<img src="img/cleanleash.png" alt="" class="rounded-image" style="width: 100%; height: auto; display: block;">
+						<img src="img/cleanleash.png" alt="" class="rounded-image fly-in-image fly-in" style="width: 100%; height: auto; display: block;">
 					</div>
 				</div>
 			</div>
@@ -71,18 +212,26 @@
 				<div class="row align-items-center">
 					<div class="col-md-4">
 						<div class="content">
-							<h2>Featured Product</h2>
-						    <p>The WagBag you didn't know you needed</p>
-						    <button class="button" onclick="window.location.href='preorder.html'">Get It Now!</button>
+							<h2 class="fly-in-text">Featured Product</h2>
+						    <p class="fly-in-text">The WagBag you didn't know you needed</p>
+						    <button class="button fly-in-text" onclick="window.location.href='preorder.html'">Get It Now!</button>
 						</div>
 					</div>
 					<div class="col-md-8">
 						<div class="row">	
-							<div class="col">
-								<a href="img/show1.png" class="popup-image"><img src="img/bottle.png" alt="" class="img1"></a>
+							<div class="col-md-6">
+								<a href="img/product2.JPG" class="popup-image"><img src="img/product2.JPG" alt="" class="img1 fly-in-image fly-in-left"></a>
 							</div>	
-							<div class="col">
-								<a href="img/show3.png" class="popup-image"><img src="img/clean.png" alt=""></a>
+							<div class="col-md-6">
+								<a href="img/show3.png" class="popup-image"><img src="img/clean.png" alt="" class="fly-in-image fly-in-right"></a>
+							</div>
+						</div>
+						<div class="row mt-3">	
+							<div class="col-md-6">
+								<a href="img/show1.png" class="popup-image"><img src="img/bottle.png" alt="" class="img1 fly-in-image fly-in-left"></a>
+							</div>	
+							<div class="col-md-6">
+								<a href="img/product1.JPG" class="popup-image"><img src="img/product1.JPG" alt="" class="fly-in-image fly-in-right"></a>
 							</div>					
 						</div>
 					</div>
@@ -98,14 +247,14 @@
 					<div class="col-md">
 						<div class="content slide-in-left">
 							<h2>About Us</h2>
-							<strong><p>Louie is my inspiration for Clean Leash Company. Like most dog owners- I start my mornings with a long dog walk. A mandortay requirement of being a good dog parent is cleaning up after your dog. And every time after I cleaned up after him, I never felt clean- I cant explain it. 
+							<strong><p>Louie is my inspiration for Clean Leash Company. Like most dog owners- I start my mornings with a long dog walk. A mandatory requirement of being a good dog parent is cleaning up after your dog. And every time after I cleaned up after him, I never felt clean- I cant explain it. 
 								Clean Leash gives you the opportunity to continue giving your dog the attention and time they need while still feeling clean</p></strong>
-							<img src="img/louie1.png" alt="" class="slide-in-left" style="width: 75%; height: auto; display: block; margin: 0 auto; border-radius: 12px;">
+							<img src="img/louie1.png" alt="" class="slide-in-left fly-in-image fly-in-left" style="width: 75%; height: auto; display: block; margin: 0 auto; border-radius: 12px;">
 						</div>
 					</div>
 					<div class="col-md">
 						<div class="content-right slide-in-right">
-							<img src="img/louie2.png" alt="" class="slide-in-right" style="width: 75%; height: auto; display: block; margin: 0 auto; border-radius: 12px;">
+							<img src="img/louie2.png" alt="" class="slide-in-right fly-in-image fly-in-right" style="width: 75%; height: auto; display: block; margin: 0 auto; border-radius: 12px;">
 							<strong><p>With Clean Leash, every walk becomes a chance to reset—not just for your dog, but for you too. We are about peace of mind, confidence, and starting your day with a fresh perspective. Once you try it, you'll wonder how you ever lived without it.</p></strong>
 						</div>
 					</div>
@@ -217,6 +366,86 @@
 		<script src="js/swiper.min.js"></script>
 		<script src="js/main.js"></script>
 		
+		<script>
+			// Exploding header animation - scroll triggered
+			let animationTriggered = false;
+			
+			// Image fly-in/fly-out animation tracking
+			let imageAnimations = new Map();
+			
+			window.addEventListener('scroll', function() {
+				const scrollPosition = window.scrollY;
+				const windowHeight = window.innerHeight;
+				const introSection = document.querySelector('.intro');
+				const introHeight = introSection.offsetHeight;
+				
+				// Trigger animation when scrolled 20% into the intro section
+				if (scrollPosition > introHeight * 0.2 && !animationTriggered) {
+					animationTriggered = true;
+					
+					// Trigger explosion animation
+					const explodingTexts = document.querySelectorAll('.exploding-text');
+					explodingTexts.forEach(function(text) {
+						text.classList.add('explode');
+					});
+					
+					// Show final text after explosion
+					setTimeout(function() {
+						const finalText = document.querySelector('.final-text');
+						finalText.classList.add('show');
+					}, 800);
+				}
+				
+				// Reset animation when scrolled back to top
+				if (scrollPosition < 50 && animationTriggered) {
+					animationTriggered = false;
+					
+					// Hide final text after 10 seconds, then reset explosion animation
+					setTimeout(function() {
+						const finalText = document.querySelector('.final-text');
+						finalText.classList.remove('show');
+						
+						// Wait for final text to fade out before showing original text
+						setTimeout(function() {
+							const explodingTexts = document.querySelectorAll('.exploding-text');
+							explodingTexts.forEach(function(text) {
+								text.classList.remove('explode');
+							});
+						}, 800); // Wait for final text transition to complete
+					}, 3000); // 3 seconds
+				}
+				
+				// Handle image and text fly-in/fly-out animations
+				const animatedElements = document.querySelectorAll('.fly-in-image, .fly-in-text');
+				animatedElements.forEach(function(element) {
+					const rect = element.getBoundingClientRect();
+					const elementTop = rect.top;
+					const elementBottom = rect.bottom;
+					const elementId = element.src || element.textContent;
+					
+					// Check if element is entering viewport (fly-in)
+					if (elementTop < windowHeight * 0.8 && elementBottom > 0 && !imageAnimations.get(elementId)) {
+						imageAnimations.set(elementId, 'flying-in');
+						element.classList.add('fly-in');
+						element.classList.remove('fly-out');
+					}
+					
+					// Check if element is leaving viewport (fly-out)
+					if ((elementTop > windowHeight || elementBottom < 0) && imageAnimations.get(elementId) === 'flying-in') {
+						imageAnimations.set(elementId, 'flying-out');
+						element.classList.add('fly-out');
+						element.classList.remove('fly-in');
+					}
+					
+					// Reset when element comes back into view
+					if (elementTop < windowHeight * 0.8 && elementBottom > 0 && imageAnimations.get(elementId) === 'flying-out') {
+						imageAnimations.set(elementId, 'flying-in');
+						element.classList.add('fly-in');
+						element.classList.remove('fly-out');
+					}
+				});
+			});
+		</script>
 		
 	</body>
 </html>

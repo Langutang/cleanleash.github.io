@@ -161,6 +161,11 @@
 				border-color: #007bff;
 				box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 			}
+			
+			/* Footer contact info styling */
+			footer .content .text span {
+				color: #abedf4 !important;
+			}
 			.size-selector {
 				display: flex;
 				gap: 10px;
@@ -248,6 +253,7 @@
 			.specs-list li {
 				padding: 8px 0;
 				border-bottom: 1px solid #eee;
+				color: #000;
 			}
 			.specs-list li:last-child {
 				border-bottom: none;
@@ -330,6 +336,33 @@
                                <button class="scroll-btn next" onclick="scrollThumbnails('next')" id="nextBtn">›</button>
                            </div>
                       </div>
+                      
+                      <!-- Product Description Tabs -->
+                      <div class="product-description" style="margin-top: 30px;">
+                          <div class="description-tabs">
+                              <div class="tab active" onclick="showTab('description')">Description</div>
+                              <div class="tab" onclick="showTab('specifications')">Specifications</div>
+                          </div>
+                          
+                          <div id="description" class="tab-content active">
+                              <p>The WagBag is the ultimate solution for clean and convenient dog walks. This innovative product combines a biodegradable waste bag dispenser with a built-in hand sanitizer, making it the perfect companion for responsible pet owners.</p>
+                              <p>No more fumbling with multiple items or worrying about hygiene during your walks. The WagBag keeps everything you need in one convenient, stylish package that attaches easily to any leash or belt.</p>
+                              <p>Made with premium materials and designed for durability, the WagBag ensures you're always prepared for a clean, enjoyable walk with your furry friend.</p>
+                          </div>
+
+                          <div id="specifications" class="tab-content">
+                              <ul class="specs-list">
+                                  <li><strong>Material:</strong> Premium ABS plastic with silicone grip</li>
+                                  <li><strong>Capacity:</strong> 15 biodegradable waste bags</li>
+                                  <li><strong>Sanitizer:</strong> 50ml hand sanitizer bottle</li>
+                                  <li><strong>Dimensions:</strong> 3.5" x 2" x 1.5"</li>
+                                  <li><strong>Weight:</strong> 4.2 oz</li>
+                                  <li><strong>Attachment:</strong> Universal clip design</li>
+                                  <li><strong>Color:</strong> Matte black finish</li>
+                                  <li><strong>Warranty:</strong> 1 year limited warranty</li>
+                              </ul>
+                          </div>
+                      </div>
                   </div>
 
                   <!-- Product Details -->
@@ -394,44 +427,13 @@
                               <div class="special-order-notice">
                                   <i class="la la-info-circle"></i>
                                   Special Order Items - Please allow 2-4 day handling period for these items.
-                              </div>
-                          </div>
                       </div>
                   </div>
               </div>
-
-              <!-- Product Description Tabs -->
-              <div class="row mt-5">
-                  <div class="col-12">
-                      <div class="product-description">
-                          <div class="description-tabs">
-                              <div class="tab active" onclick="showTab('description')">Description</div>
-                              <div class="tab" onclick="showTab('specifications')">Specifications</div>
-                          </div>
-                          
-                          <div id="description" class="tab-content active">
-                              <p>The WagBag is the ultimate solution for clean and convenient dog walks. This innovative product combines a biodegradable waste bag dispenser with a built-in hand sanitizer, making it the perfect companion for responsible pet owners.</p>
-                              <p>No more fumbling with multiple items or worrying about hygiene during your walks. The WagBag keeps everything you need in one convenient, stylish package that attaches easily to any leash or belt.</p>
-                              <p>Made with premium materials and designed for durability, the WagBag ensures you're always prepared for a clean, enjoyable walk with your furry friend.</p>
-                          </div>
-                          
-                          <div id="specifications" class="tab-content">
-                              <ul class="specs-list">
-                                  <li><strong>Material:</strong> Premium ABS plastic with silicone grip</li>
-                                  <li><strong>Capacity:</strong> 15 biodegradable waste bags</li>
-                                  <li><strong>Sanitizer:</strong> 50ml hand sanitizer bottle</li>
-                                  <li><strong>Dimensions:</strong> 3.5" x 2" x 1.5"</li>
-                                  <li><strong>Weight:</strong> 4.2 oz</li>
-                                  <li><strong>Attachment:</strong> Universal clip design</li>
-                                  <li><strong>Color:</strong> Matte black finish</li>
-                                  <li><strong>Warranty:</strong> 1 year limited warranty</li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+            </div>
       </div>
+          </div>
+                </div>
 
       <!-- Preorder Modal -->
       <div id="preorderModal" class="modal fade" tabindex="-1" aria-labelledby="preorderModalLabel" aria-hidden="true">
@@ -475,15 +477,15 @@
                                   <option value="5">5</option>
                               </select>
                           </div>
-                          <div class="mb-3">
+                <div class="mb-3">
                               <label for="message" class="form-label">Additional Notes</label>
                               <textarea class="form-control" id="message" name="message" rows="3" placeholder="Any special requests or questions?"></textarea>
                           </div>
                           <div class="alert alert-info">
                               <i class="la la-info-circle"></i>
                               <strong>Pre-order Information:</strong> Your WagBag will be shipped within 2-4 weeks of the official release date. You'll receive email updates about your order status.
-                          </div>
-                      </form>
+                </div>
+            </form>
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -491,9 +493,9 @@
                   </div>
               </div>
           </div>
-      </div>
+    </div>
 
-		<!-- footer -->
+    		<!-- footer -->
 		<footer id="contact">
 			<div class="container">
 				<div class="row">
