@@ -4,12 +4,277 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="img/favicon.ico">
-		<title>Preorder - Clean Leash Company</title>
+		<title>The WagBag - Clean Leash Company</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/line-awesome.min.css">
 		<link rel="stylesheet" href="css/magnific-popup.css">
 		<link rel="stylesheet" href="css/swiper.min.css">
 		<link rel="stylesheet" href="css/style.css">
+		<style>
+			.product-page {
+				padding: 120px 0 60px 0;
+				background-color: #ffffcc;
+				min-height: 100vh;
+			}
+			.product-images {
+				background: white;
+				border-radius: 8px;
+				padding: 20px;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			}
+			.main-image {
+				width: 100%;
+				height: 400px;
+				object-fit: contain;
+				border-radius: 8px;
+				margin-bottom: 20px;
+			}
+			.thumbnail-container {
+				position: relative;
+				width: 100%;
+				overflow: hidden;
+			}
+			.thumbnail-images {
+				display: flex;
+				gap: 10px;
+				transition: transform 0.3s ease;
+				width: max-content;
+			}
+			.thumbnail {
+				width: 80px;
+				height: 80px;
+				object-fit: cover;
+				border-radius: 4px;
+				cursor: pointer;
+				border: 2px solid transparent;
+				transition: border-color 0.3s;
+				flex-shrink: 0;
+			}
+			.scroll-btn {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background: rgba(0, 0, 0, 0.7);
+				color: white;
+				border: none;
+				border-radius: 50%;
+				width: 30px;
+				height: 30px;
+				cursor: pointer;
+				z-index: 10;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 14px;
+				transition: background-color 0.3s;
+			}
+			.scroll-btn:hover {
+				background: rgba(0, 0, 0, 0.9);
+			}
+			.scroll-btn.prev {
+				left: 5px;
+			}
+			.scroll-btn.next {
+				right: 5px;
+			}
+			.scroll-btn.hidden {
+				display: none;
+			}
+			.thumbnail:hover, .thumbnail.active {
+				border-color: #007bff;
+			}
+			.product-details {
+				background: white;
+				border-radius: 8px;
+				padding: 30px;
+				box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+				height: fit-content;
+			}
+			.product-title {
+				font-size: 2.5rem;
+				font-weight: bold;
+				margin-bottom: 10px;
+				color: #333;
+			}
+			.preorder-badge {
+				background: #ffffcc;
+				color: #000;
+				padding: 5px 15px;
+				border-radius: 4px;
+				font-weight: bold;
+				font-size: 0.9rem;
+				display: inline-block;
+				margin-bottom: 15px;
+				transform: rotate(-2deg);
+			}
+			.price {
+				font-size: 2rem;
+				font-weight: bold;
+				color: #333;
+				margin-bottom: 20px;
+			}
+			.original-price {
+				text-decoration: line-through;
+				color: #999;
+				font-size: 1.2rem;
+				margin-right: 10px;
+			}
+			.financing-options {
+				background: #f8f9fa;
+				padding: 15px;
+				border-radius: 6px;
+				margin-bottom: 20px;
+			}
+			.financing-option {
+				margin-bottom: 10px;
+				font-size: 0.9rem;
+			}
+			.product-info {
+				margin-bottom: 25px;
+			}
+			.info-row {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 10px;
+				padding: 8px 0;
+				border-bottom: 1px solid #eee;
+			}
+			.info-label {
+				font-weight: 600;
+				color: #000;
+			}
+			.info-value {
+				color: #000;
+			}
+			.color-selector {
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				padding: 4px 8px;
+				background: white;
+				color: #000;
+				font-size: 0.9rem;
+				cursor: pointer;
+				min-width: 120px;
+			}
+			.color-selector:focus {
+				outline: none;
+				border-color: #007bff;
+				box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+			}
+			.size-selector {
+				display: flex;
+				gap: 10px;
+				margin-bottom: 20px;
+			}
+			.size-option {
+				padding: 8px 16px;
+				border: 2px solid #ddd;
+				border-radius: 4px;
+				cursor: pointer;
+				transition: all 0.3s;
+			}
+			.size-option:hover, .size-option.selected {
+				border-color: #007bff;
+				background-color: #007bff;
+				color: white;
+			}
+			.payment-options {
+				border: 2px solid #dc3545;
+				border-radius: 6px;
+				padding: 20px;
+				margin-bottom: 20px;
+				background: #fff;
+			}
+			.payment-option {
+				margin-bottom: 10px;
+			}
+			.payment-option input[type="radio"] {
+				margin-right: 10px;
+			}
+			.checkout-btn {
+				width: 100%;
+				background: #000;
+				color: #ffc107;
+				border: none;
+				padding: 15px;
+				font-size: 1.2rem;
+				font-weight: bold;
+				border-radius: 6px;
+				cursor: pointer;
+				transition: background-color 0.3s;
+			}
+			.checkout-btn:hover {
+				background: #333;
+			}
+			.special-order-notice {
+				background: #dc3545;
+				color: white;
+				padding: 10px;
+				border-radius: 4px;
+				margin-top: 15px;
+				font-size: 0.9rem;
+			}
+			.special-order-notice i {
+				margin-right: 8px;
+			}
+			.product-description {
+				margin-top: 30px;
+			}
+			.description-tabs {
+				display: flex;
+				border-bottom: 2px solid #eee;
+				margin-bottom: 20px;
+			}
+			.tab {
+				padding: 10px 20px;
+				cursor: pointer;
+				border-bottom: 2px solid transparent;
+				transition: border-color 0.3s;
+			}
+			.tab.active {
+				border-bottom-color: #007bff;
+				color: #007bff;
+			}
+			.tab-content {
+				display: none;
+			}
+			.tab-content.active {
+				display: block;
+			}
+			.specs-list {
+				list-style: none;
+				padding: 0;
+			}
+			.specs-list li {
+				padding: 8px 0;
+				border-bottom: 1px solid #eee;
+			}
+			.specs-list li:last-child {
+				border-bottom: none;
+			}
+			.quantity-selector {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-bottom: 20px;
+			}
+			.quantity-btn {
+				width: 40px;
+				height: 40px;
+				border: 1px solid #ddd;
+				background: white;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 1.2rem;
+			}
+			.quantity-input {
+				width: 60px;
+				height: 40px;
+				text-align: center;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+			}
+		</style>
 	</head>
 	<body>
 		
@@ -22,7 +287,6 @@
           </div>
       </div>
       <!-- end loader -->
-
 
       <!-- navbar -->
       <div id="navbar" class="navbar navbar-expand-lg">
@@ -44,48 +308,192 @@
       </div>
       <!-- end navbar -->
 
-
-      <!-- intro -->
-      <div id="home" class="intro">
+      <!-- Product Page -->
+      <div class="product-page">
           <div class="container">
-              <div class="row align-items-center">
-                  <div class="col-md-12">
-                      <div class="content">
-                        <h2>Preorder Your WagBag</h2>
-                        <p class="preorder-text">Enter your email below to be notified when Preorders open!</p>
+              <div class="row">
+                  <!-- Product Images -->
+                  <div class="col-md-6">
+                      <div class="product-images">
+                                                     <img src="img/bottle.png" alt="WagBag Bottle" class="main-image" id="mainImage">
+                           <div class="thumbnail-container">
+                               <button class="scroll-btn prev" onclick="scrollThumbnails('prev')" id="prevBtn">‹</button>
+                               <div class="thumbnail-images" id="thumbnailContainer">
+                                   <img src="img/bottle.png" alt="WagBag Bottle" class="thumbnail active" onclick="changeImage('img/bottle.png')">
+                                   <img src="img/product1.JPG" alt="WagBag Product View 1" class="thumbnail" onclick="changeImage('img/product1.JPG')">
+                                   <img src="img/product2.JPG" alt="WagBag Product View 2" class="thumbnail" onclick="changeImage('img/product2.JPG')">
+                                   <img src="img/product3.JPG" alt="WagBag Product View 3" class="thumbnail" onclick="changeImage('img/product3.JPG')">
+                                   <img src="img/product4.JPG" alt="WagBag Product View 4" class="thumbnail" onclick="changeImage('img/product4.JPG')">
+                                   <img src="img/product5.JPG" alt="WagBag Product View 5" class="thumbnail" onclick="changeImage('img/product5.JPG')">
+                                   <img src="img/bottle2.png" alt="WagBag Bottle Side View" class="thumbnail" onclick="changeImage('img/bottle2.png')">
+                               </div>
+                               <button class="scroll-btn next" onclick="scrollThumbnails('next')" id="nextBtn">›</button>
+                           </div>
+                      </div>
+                  </div>
+
+                  <!-- Product Details -->
+                  <div class="col-md-6">
+                      <div class="product-details">
+                          <div class="preorder-badge">PRE-ORDER</div>
+                          <h1 class="product-title">The WagBag</h1>
+                          <div class="price">
+                              <span class="original-price">$49.99</span>
+                              <span>$39.99</span>
+                          </div>
+
+                                                     <!-- Tagline -->
+                           <div class="financing-options">
+                               <div class="financing-option" style="color: #000; font-size: 1.1rem; font-weight: 500; text-align: center; margin-bottom: 0;">
+                                   The Wagbag, your first step to cleaner, happier walks
+                               </div>
+                           </div>
+
+                                                     <!-- Product Information -->
+                           <div class="product-info">
+                               <div class="info-row">
+                                   <span class="info-label">Product Code:</span>
+                                   <span class="info-value">WAGBAG-001</span>
+                               </div>
+                               <div class="info-row">
+                                   <span class="info-label">Availability:</span>
+                                   <span class="info-value">Pre-order</span>
+                               </div>
+                               <div class="info-row">
+                                   <span class="info-label">Size:</span>
+                                   <span class="info-value">Standard</span>
+                               </div>
+                               <div class="info-row">
+                                   <span class="info-label">Color:</span>
+                                   <select class="color-selector" id="colorSelect" onchange="updateColor()">
+                                       <option value="Sand Bucket">Sand Bucket</option>
+                                       <option value="Papaya">Papaya</option>
+                                       <option value="Onyx">Onyx</option>
+                                       <option value="Blue">Blue</option>
+                                   </select>
+                               </div>
+                           </div>
+
+                          <!-- Quantity Selector -->
+                          <div class="quantity-selector">
+                              <label style="font-weight: 600; margin-right: 10px;">Quantity:</label>
+                              <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                              <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
+                              <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                          </div>
+
+                          <!-- Payment Options -->
+                          <div class="payment-options">
+                              <h6 style="margin-bottom: 15px; color: #dc3545;">Payment Options:</h6>
+                              <div class="payment-option">
+                                  <input type="radio" id="full-payment" name="payment" value="full" checked>
+                                  <label for="full-payment">Full Payment - $11.99</label>
+                              </div>
+
+                              <button class="checkout-btn" onclick="openPreorderModal()">PRE-ORDER</button>
+                              <div class="special-order-notice">
+                                  <i class="la la-info-circle"></i>
+                                  Special Order Items - Please allow 2-4 day handling period for these items.
+                              </div>
+                          </div>
                       </div>
                   </div>
               </div>
-            </div>
-      </div>
-      <div class="container" style="text-align: center;">
-        <img src="img/bottle.png" alt="WagBag Bottle" style="width: 30%; margin-bottom: 30px;">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-4">
-              <h2 class="text-4xl font-extrabold text-gray-800">Let's Get you Clean</h2>
-            </div>
-      
-            <form class="grid grid-cols-1 gap-6 w-1/3 mx-auto" action="https://formspree.io/f/mqabbdlg" method="POST">
-      
-                <div class="mb-3">
-                    <label for="email" class="preorder-text">Email address</label>
-                    <input type="email" class="form-control form-control-custom-width" id="email" aria-describedby="emailHelp" required>
-                </div>
 
-                <div class="mb-3">
-                    <label for="message" class="preorder-text">Message</label>
-                    <textarea name="message" class="form-control form-control-custom-width" id="message" rows="3" required></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <button type="submit" class="button product-page-button">Send Message</button>
-                </div>
-      
-            </form>
+              <!-- Product Description Tabs -->
+              <div class="row mt-5">
+                  <div class="col-12">
+                      <div class="product-description">
+                          <div class="description-tabs">
+                              <div class="tab active" onclick="showTab('description')">Description</div>
+                              <div class="tab" onclick="showTab('specifications')">Specifications</div>
+                          </div>
+                          
+                          <div id="description" class="tab-content active">
+                              <p>The WagBag is the ultimate solution for clean and convenient dog walks. This innovative product combines a biodegradable waste bag dispenser with a built-in hand sanitizer, making it the perfect companion for responsible pet owners.</p>
+                              <p>No more fumbling with multiple items or worrying about hygiene during your walks. The WagBag keeps everything you need in one convenient, stylish package that attaches easily to any leash or belt.</p>
+                              <p>Made with premium materials and designed for durability, the WagBag ensures you're always prepared for a clean, enjoyable walk with your furry friend.</p>
+                          </div>
+                          
+                          <div id="specifications" class="tab-content">
+                              <ul class="specs-list">
+                                  <li><strong>Material:</strong> Premium ABS plastic with silicone grip</li>
+                                  <li><strong>Capacity:</strong> 15 biodegradable waste bags</li>
+                                  <li><strong>Sanitizer:</strong> 50ml hand sanitizer bottle</li>
+                                  <li><strong>Dimensions:</strong> 3.5" x 2" x 1.5"</li>
+                                  <li><strong>Weight:</strong> 4.2 oz</li>
+                                  <li><strong>Attachment:</strong> Universal clip design</li>
+                                  <li><strong>Color:</strong> Matte black finish</li>
+                                  <li><strong>Warranty:</strong> 1 year limited warranty</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-    </div>
+      </div>
 
-    		<!-- footer -->
+      <!-- Preorder Modal -->
+      <div id="preorderModal" class="modal fade" tabindex="-1" aria-labelledby="preorderModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="preorderModalLabel">Pre-order The WagBag</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <form id="preorderForm" action="https://formspree.io/f/mqabbdlg" method="POST">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="mb-3">
+                                      <label for="firstName" class="form-label">First Name *</label>
+                                      <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="mb-3">
+                                      <label for="lastName" class="form-label">Last Name *</label>
+                                      <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <label for="email" class="form-label">Email Address *</label>
+                              <input type="email" class="form-control" id="email" name="email" required>
+                          </div>
+                          <div class="mb-3">
+                              <label for="phone" class="form-label">Phone Number</label>
+                              <input type="tel" class="form-control" id="phone" name="phone">
+                          </div>
+                          <div class="mb-3">
+                              <label for="quantity" class="form-label">Quantity</label>
+                              <select class="form-control" id="modalQuantity" name="quantity">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                              </select>
+                          </div>
+                          <div class="mb-3">
+                              <label for="message" class="form-label">Additional Notes</label>
+                              <textarea class="form-control" id="message" name="message" rows="3" placeholder="Any special requests or questions?"></textarea>
+                          </div>
+                          <div class="alert alert-info">
+                              <i class="la la-info-circle"></i>
+                              <strong>Pre-order Information:</strong> Your WagBag will be shipped within 2-4 weeks of the official release date. You'll receive email updates about your order status.
+                          </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <button type="submit" form="preorderForm" class="btn btn-primary">Submit Pre-order</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+		<!-- footer -->
 		<footer id="contact">
 			<div class="container">
 				<div class="row">
@@ -148,6 +556,135 @@
 		<script src="js/magnific-popup.min.js"></script>
 		<script src="js/swiper.min.js"></script>
 		<script src="js/main.js"></script>
+		
+		<script>
+			// Image gallery functionality
+			let currentScrollPosition = 0;
+			const thumbnailsPerView = 4; // Number of thumbnails visible at once
+			
+			function changeImage(src) {
+				document.getElementById('mainImage').src = src;
+				// Update active thumbnail
+				document.querySelectorAll('.thumbnail').forEach(thumb => {
+					thumb.classList.remove('active');
+				});
+				event.target.classList.add('active');
+			}
+			
+			function scrollThumbnails(direction) {
+				const container = document.getElementById('thumbnailContainer');
+				const thumbnails = container.querySelectorAll('.thumbnail');
+				const totalThumbnails = thumbnails.length;
+				const maxScroll = Math.max(0, totalThumbnails - thumbnailsPerView);
+				
+				if (direction === 'next' && currentScrollPosition < maxScroll) {
+					currentScrollPosition++;
+				} else if (direction === 'prev' && currentScrollPosition > 0) {
+					currentScrollPosition--;
+				}
+				
+				// Calculate scroll position
+				const scrollAmount = currentScrollPosition * (90 + 10); // thumbnail width + gap
+				container.style.transform = `translateX(-${scrollAmount}px)`;
+				
+				// Update button visibility
+				updateScrollButtons();
+			}
+			
+			function updateScrollButtons() {
+				const prevBtn = document.getElementById('prevBtn');
+				const nextBtn = document.getElementById('nextBtn');
+				const thumbnails = document.querySelectorAll('.thumbnail');
+				const totalThumbnails = thumbnails.length;
+				const maxScroll = Math.max(0, totalThumbnails - thumbnailsPerView);
+				
+				prevBtn.classList.toggle('hidden', currentScrollPosition === 0);
+				nextBtn.classList.toggle('hidden', currentScrollPosition >= maxScroll);
+			}
+			
+			// Initialize scroll buttons on page load
+			document.addEventListener('DOMContentLoaded', function() {
+				updateScrollButtons();
+			});
+			
+			// Color selection functionality
+			function updateColor() {
+				const selectedColor = document.getElementById('colorSelect').value;
+				console.log('Selected color:', selectedColor);
+				// You can add additional functionality here, such as updating product images based on color
+			}
+
+			// Quantity selector functionality
+			function changeQuantity(delta) {
+				const input = document.getElementById('quantity');
+				const newValue = Math.max(1, Math.min(10, parseInt(input.value) + delta));
+				input.value = newValue;
+				// Update modal quantity
+				document.getElementById('modalQuantity').value = newValue;
+			}
+
+			// Tab functionality
+			function showTab(tabName) {
+				// Hide all tab contents
+				document.querySelectorAll('.tab-content').forEach(content => {
+					content.classList.remove('active');
+				});
+				// Remove active class from all tabs
+				document.querySelectorAll('.tab').forEach(tab => {
+					tab.classList.remove('active');
+				});
+				
+				// Show selected tab content
+				document.getElementById(tabName).classList.add('active');
+				// Add active class to clicked tab
+				event.target.classList.add('active');
+			}
+
+			// Preorder modal functionality
+			function openPreorderModal() {
+				const modal = new bootstrap.Modal(document.getElementById('preorderModal'));
+				modal.show();
+			}
+
+			// Update modal quantity when main quantity changes
+			document.getElementById('quantity').addEventListener('change', function() {
+				document.getElementById('modalQuantity').value = this.value;
+			});
+
+			// Form submission handling
+			document.getElementById('preorderForm').addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				// Add form data
+				const formData = new FormData(this);
+				formData.append('product', 'The WagBag');
+				formData.append('payment_type', document.querySelector('input[name="payment"]:checked').value);
+				formData.append('selected_color', document.getElementById('colorSelect').value);
+				
+				// Submit form
+				fetch(this.action, {
+					method: 'POST',
+					body: formData,
+					headers: {
+						'Accept': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if (data.ok) {
+						alert('Thank you for your pre-order! We\'ll be in touch soon.');
+						bootstrap.Modal.getInstance(document.getElementById('preorderModal')).hide();
+						this.reset();
+					} else {
+						alert('There was an error submitting your pre-order. Please try again.');
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					alert('There was an error submitting your pre-order. Please try again.');
+				});
+			});
+		</script>
 		
 	</body>
 </html>
