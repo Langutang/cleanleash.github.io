@@ -367,14 +367,11 @@
 
                           <div id="specifications" class="tab-content">
                               <ul class="specs-list">
-                                  <li><strong>Material:</strong> Premium ABS plastic with silicone grip</li>
-                                  <li><strong>Capacity:</strong> 15 biodegradable waste bags</li>
-                                  <li><strong>Sanitizer:</strong> 50ml hand sanitizer bottle</li>
-                                  <li><strong>Dimensions:</strong> 3.5" x 2" x 1.5"</li>
-                                  <li><strong>Weight:</strong> 4.2 oz</li>
-                                  <li><strong>Attachment:</strong> Universal clip design</li>
-                                  <li><strong>Color:</strong> Matte black finish</li>
-                                  <li><strong>Warranty:</strong> 1 year limited warranty</li>
+                                  <li><strong>Material:</strong> Polycarbonate</li>
+                                  <li><strong>Dog Bags:</strong> Fits a standard dog bag roll</li>
+                                  <li><strong>Sanitizer Size:</strong> 50ml</li>
+                                  <li><strong>Dimensions:</strong> <TBD></li>
+                                  <li><strong>Weight:</strong> <TBD></li>
                               </ul>
                           </div>
                       </div>
@@ -622,13 +619,52 @@
 			// Initialize scroll buttons on page load
 			document.addEventListener('DOMContentLoaded', function() {
 				updateScrollButtons();
+				// Initialize with default color images
+				updateColor();
 			});
 			
 			// Color selection functionality
 			function updateColor() {
 				const selectedColor = document.getElementById('colorSelect').value;
 				console.log('Selected color:', selectedColor);
-				// You can add additional functionality here, such as updating product images based on color
+				
+				// Define image sets for each color
+				const imageSets = {
+					'Onyx': ['img/all1.jpg', 'img/onyx1.jpg', 'img/onyx2.jpg', 'img/onyx3.jpg', 'img/all2.pjpgng'],
+					'Blue': ['img/all1.jpg', 'img/blue1.jpg', 'img/blue2.jpg', 'img/all2.jpg'],
+					'Papaya': ['img/all1.jpg', 'img/papaya1.jpg', 'img/papaya2.jpg', 'img/papaya3.jpg', 'img/all2.jpg'],
+					'Sand Bucket': ['img/all1.jpg', 'img/sandbox1.jpg', 'img/sandbox2.jpg', 'img/all2.jpg']
+				};
+				
+				// Get the image set for the selected color
+				const selectedImages = imageSets[selectedColor];
+				if (!selectedImages) return;
+				
+				// Update main image
+				const mainImage = document.getElementById('mainImage');
+				mainImage.src = selectedImages[0];
+				
+				// Update thumbnails
+				const thumbnailContainer = document.getElementById('thumbnailContainer');
+				thumbnailContainer.innerHTML = '';
+				
+				selectedImages.forEach((imageSrc, index) => {
+					const thumbnail = document.createElement('img');
+					thumbnail.src = imageSrc;
+					thumbnail.alt = `WagBag ${selectedColor} View ${index + 1}`;
+					thumbnail.className = index === 0 ? 'thumbnail active' : 'thumbnail';
+					thumbnail.onclick = function() {
+						changeImage(imageSrc);
+						// Update active thumbnail
+						document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+						this.classList.add('active');
+					};
+					thumbnailContainer.appendChild(thumbnail);
+				});
+				
+				// Reset scroll position
+				currentScrollPosition = 0;
+				updateScrollButtons();
 			}
 
 			// Quantity selector functionality
