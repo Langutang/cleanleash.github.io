@@ -324,105 +324,59 @@
 			  storefrontAccessToken: '2ca1bcc28daddce5c28c6e860d12bf01',
 			});
 			ShopifyBuy.UI.onReady(client).then(function (ui) {
-			  ui.createComponent('product', {
-				id: '10385160372529',
-				node: document.getElementById('product-component-1756596602809'),
-				moneyFormat: '%24%7B%7Bamount%7D%7D',
-				options: {
-		  "product": {
-			"styles": {
-			  "product": {
-				"@media (min-width: 601px)": {
-				  "max-width": "calc(25% - 20px)",
-				  "margin-left": "20px",
-				  "margin-bottom": "50px"
-				}
-			  },
-			  "button": {
-				":hover": {
-				  "background-color": "#4cd005"
-				},
-				"background-color": "#54e706",
-				":focus": {
-				  "background-color": "#4cd005"
-				}
-			  }
-			},
-			"text": {
-			  "button": "Add to cart"
-			}
-		  },
-		  "productSet": {
-			"styles": {
-			  "products": {
-				"@media (min-width: 601px)": {
-				  "margin-left": "-20px"
-				}
-			  }
-			}
-		  },
-		  "modalProduct": {
-			"contents": {
-			  "img": false,
-			  "imgWithCarousel": true,
-			  "button": false,
-			  "buttonWithQuantity": true
-			},
-			"styles": {
-			  "product": {
-				"@media (min-width: 601px)": {
-				  "max-width": "100%",
-				  "margin-left": "0px",
-				  "margin-bottom": "0px"
-				}
-			  },
-			  "button": {
-				":hover": {
-				  "background-color": "#4cd005"
-				},
-				"background-color": "#54e706",
-				":focus": {
-				  "background-color": "#4cd005"
-				}
-			  }
-			},
-			"text": {
-			  "button": "Add to cart"
-			}
-		  },
-		  "option": {},
-		  "cart": {
-			"styles": {
-			  "button": {
-				":hover": {
-				  "background-color": "#4cd005"
-				},
-				"background-color": "#54e706",
-				":focus": {
-				  "background-color": "#4cd005"
-				}
-			  }
-			},
-			"text": {
-			  "total": "Subtotal",
-			  "button": "Checkout"
-			}
-		  },
-		  "toggle": {
-			"styles": {
-			  "toggle": {
-				"background-color": "#54e706",
-				":hover": {
-				  "background-color": "#4cd005"
-				},
-				":focus": {
-				  "background-color": "#4cd005"
-				}
-			  }
-			}
-		  }
-		},
-			  });
+				const productComponent = ui.createComponent('product', {
+					id: '10385160372529',
+					node: document.getElementById('product-component-1758558171830'),
+					moneyFormat: '%24%7B%7Bamount%7D%7D',
+					options: {
+						"product": {
+							"styles": {
+								"product": {
+									"@media (min-width: 601px)": {
+										"max-width": "calc(25% - 20px)",
+										"margin-left": "20px",
+										"margin-bottom": "50px"
+									}
+								},
+								"button": {
+									"color": "#fffb83",
+									":hover": {
+										"color": "#fffb83",
+										"background-color": "#000000"
+									},
+									"background-color": "#000000",
+									":focus": {
+										"background-color": "#000000"
+									},
+									"border-radius": "39px",
+									"padding-left": "100px",
+									"padding-right": "100px"
+								}
+							},
+							"contents": {
+								"img": false,
+								"title": false,
+								"price": false
+							},
+							"text": {
+								"button": "Add to cart"
+							}
+						}
+					}
+				});
+
+				// Listen for variant change events
+				productComponent.on('variant:change', function(event) {
+					const selectedVariant = event.variant;
+					if (selectedVariant) {
+						const selectedColor = selectedVariant.optionValues.find(option => option.name === 'Color').value;
+						updateSelectedColorText(selectedColor);
+
+						// Update product images based on selected variant
+						const imageUrls = selectedVariant.images.map(image => image.src);
+						updateProductImages(imageUrls);
+					}
+				});
 			});
 		  }
 		})();
@@ -540,41 +494,19 @@
                                    <span class="info-label">Size:</span>
                                    <span class="info-value">Standard</span>
                                </div>
-                               <div class="info-row">
-                                   <span class="info-label">Color:</span>
-                                   <select class="color-selector" id="colorSelect" onchange="updateColor()">
-                                       <option value="Sand Bucket">Sand Bucket</option>
-                                       <option value="Papaya">Papaya</option>
-                                       <option value="Onyx">Onyx</option>
-                                       <option value="Denim">Denim</option>
-                                   </select>
-                               </div>
                            </div>
-
-                          <!-- Quantity Selector -->
-                          <div class="quantity-selector">
-                              <label style="font-weight: 600; margin-right: 10px;">Quantity:</label>
-                              <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
-                              <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
-                              <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
-                          </div>
 
                           <!-- Payment Options -->
                           <div class="payment-options">
                               <h6 style="margin-bottom: 15px; color: #dc3545;">Payment Options:</h6>
                               <div class="payment-option">
                                   <input type="radio" id="full-payment" name="payment" value="full" checked>
-                                  <label for="full-payment">Full Payment - $</label>
+                                  <label style="color: black;"for="full-payment">Full Payment - $12.00</label>
                               </div>
-
+							  <label style="color: black;">Color :</label>
                                                         <!-- Shopify Buy Button -->
-                          <div id='product-component-1756596602809'></div>
+                          <div id='product-component-1758558171830'></div>
                           
-                          <button class="checkout-btn" onclick="openPreorderModal()">PRE-ORDER</button>
-                          <div class="special-order-notice">
-                              <i class="la la-info-circle"></i>
-                              Special Order Items - Please allow 2-4 day handling period for these items.
-                      </div>
                   </div>
               </div>
             </div>
@@ -582,65 +514,6 @@
           </div>
                 </div>
 
-      <!-- Preorder Modal -->
-      <div id="preorderModal" class="modal fade" tabindex="-1" aria-labelledby="preorderModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="preorderModalLabel">Pre-order The WagBag</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                      <form id="preorderForm" action="https://formspree.io/f/mqabbdlg" method="POST">
-                          <div class="row">
-                              <div class="col-md-6">
-                                  <div class="mb-3">
-                                      <label for="firstName" class="form-label">First Name *</label>
-                                      <input type="text" class="form-control" id="firstName" name="firstName" required>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="mb-3">
-                                      <label for="lastName" class="form-label">Last Name *</label>
-                                      <input type="text" class="form-control" id="lastName" name="lastName" required>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="mb-3">
-                              <label for="email" class="form-label">Email Address *</label>
-                              <input type="email" class="form-control" id="email" name="email" required>
-                          </div>
-                          <div class="mb-3">
-                              <label for="phone" class="form-label">Phone Number</label>
-                              <input type="tel" class="form-control" id="phone" name="phone">
-                          </div>
-                          <div class="mb-3">
-                              <label for="quantity" class="form-label">Quantity</label>
-                              <select class="form-control" id="modalQuantity" name="quantity">
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
-                              </select>
-                          </div>
-                <div class="mb-3">
-                              <label for="message" class="form-label">Additional Notes</label>
-                              <textarea class="form-control" id="message" name="message" rows="3" placeholder="Any special requests or questions?"></textarea>
-                          </div>
-                          <div class="alert alert-info">
-                              <i class="la la-info-circle"></i>
-                              <strong>Pre-order Information:</strong> Your WagBag will be shipped within 2-4 weeks of the official release date. You'll receive email updates about your order status.
-                </div>
-            </form>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <button type="submit" form="preorderForm" class="btn btn-primary">Submit Pre-order</button>
-                  </div>
-              </div>
-          </div>
-    </div>
 
     		<!-- footer -->
 		<footer id="contact">
@@ -765,7 +638,7 @@
 				
 				// Define image sets for each color
 				const imageSets = {
-					'Onyx': ['img/all1.jpg', 'img/onyx1.jpg', 'img/onyx2.jpg', 'img/onyx3.jpg', 'img/all2.pjpgng'],
+					'Onyx': ['img/all1.jpg', 'img/onyx1.jpg', 'img/onyx2.jpg', 'img/onyx3.jpg', 'img/all2.jpg'],
 					'Denim': ['img/all1.jpg', 'img/blue1.jpg', 'img/blue2.jpg', 'img/all2.jpg'],
 					'Papaya': ['img/all1.jpg', 'img/papaya1.jpg', 'img/papaya2.jpg', 'img/papaya3.jpg', 'img/all2.jpg'],
 					'Sand Bucket': ['img/all1.jpg', 'img/sandbox1.jpg', 'img/sandbox2.jpg', 'img/all2.jpg']
@@ -800,6 +673,67 @@
 				// Reset scroll position
 				currentScrollPosition = 0;
 				updateScrollButtons();
+
+				// Update Shopify Buy Button component
+				const shopifyComponent = document.getElementById('product-component-1758558171830');
+				if (shopifyComponent) {
+					// Assuming the Shopify component can be updated with a new color or option
+					// This part may need to be adjusted based on how Shopify handles options
+					ShopifyBuy.UI.onReady(client).then(function (ui) {
+						ui.createComponent('product', {
+							id: '10385160372529',
+							node: shopifyComponent,
+							moneyFormat: '%24%7B%7Bamount%7D%7D',
+							options: {
+								"product": {
+									"styles": {
+										"product": {
+											"@media (min-width: 601px)": {
+												"max-width": "calc(25% - 20px)",
+												"margin-left": "20px",
+												"margin-bottom": "50px"
+											}
+										},
+										"button": {
+											"color": "#fffb83",
+											":hover": {
+												"color": "#fffb83",
+												"background-color": "#000000"
+											},
+											"background-color": "#000000",
+											":focus": {
+												"background-color": "#000000"
+											},
+											"border-radius": "39px",
+											"padding-left": "100px",
+											"padding-right": "100px"
+										}
+									},
+									"contents": {
+										"img": false,
+										"title": false,
+										"price": false
+									},
+									"text": {
+										"button": "Add to cart"
+									},
+									"variantId": getVariantIdForColor(selectedColor) // Function to map color to variant ID
+								}
+							}
+						});
+					});
+				}
+			}
+
+			// Function to map color to Shopify variant ID
+			function getVariantIdForColor(color) {
+				const variantMap = {
+					'Onyx': 'VARIANT_ID_FOR_ONYX',
+					'Denim': 'VARIANT_ID_FOR_DENIM',
+					'Papaya': 'VARIANT_ID_FOR_PAPAYA',
+					'Sand Bucket': 'VARIANT_ID_FOR_SAND_BUCKET'
+				};
+				return variantMap[color];
 			}
 
 			// Quantity selector functionality
@@ -872,6 +806,39 @@
 					alert('There was an error submitting your pre-order. Please try again.');
 				});
 			});
+
+			// Update the selected color text based on Shopify selection
+			function updateSelectedColorText(color) {
+				const selectedColorText = document.getElementById('selectedColorText');
+				selectedColorText.textContent = color;
+			}
+
+			// Function to update product images
+			function updateProductImages(imageUrls) {
+				const mainImage = document.getElementById('mainImage');
+				const thumbnailContainer = document.getElementById('thumbnailContainer');
+				
+				if (imageUrls.length > 0) {
+					changeImage(imageUrls[0]); // Use changeImage function
+				}
+				
+				thumbnailContainer.innerHTML = '';
+				imageUrls.forEach((url, index) => {
+					const thumbnail = document.createElement('img');
+					thumbnail.src = url;
+					thumbnail.alt = `Product Image ${index + 1}`;
+					thumbnail.className = index === 0 ? 'thumbnail active' : 'thumbnail';
+					thumbnail.onclick = function() {
+						changeImage(url); // Use changeImage function
+						document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+						this.classList.add('active');
+					};
+					thumbnailContainer.appendChild(thumbnail);
+				});
+			}
+
+			// Example usage: Call this function when the Shopify Buy Button selection changes
+			// updateSelectedColorText('Denim');
 		</script>
 		
 	</body>
