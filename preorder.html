@@ -422,23 +422,21 @@
                   <!-- Product Images -->
                   <div class="col-md-6">
                       <div class="product-images">
-                                                     <img src="img/bottle.png" alt="WagBag Bottle" class="main-image" id="mainImage">
+                                                     <img src="img/all1.jpg" alt="WagBag Bottle" class="main-image" id="mainImage">
                            <div class="thumbnail-container">
                                <button class="scroll-btn prev" onclick="scrollThumbnails('prev')" id="prevBtn">‹</button>
                                <div class="thumbnail-images" id="thumbnailContainer">
-                                   <img src="img/bottle.png" alt="WagBag Bottle" class="thumbnail active" onclick="changeImage('img/bottle.png')">
-                                   <img src="img/product1.JPG" alt="WagBag Product View 1" class="thumbnail" onclick="changeImage('img/blue1.jpg')">
-                                   <img src="img/product2.JPG" alt="WagBag Product View 2" class="thumbnail" onclick="changeImage('img/blue2.jpg')">
-                                   <img src="img/product3.JPG" alt="WagBag Product View 3" class="thumbnail" onclick="changeImage('img/blue3.jpg')">
-                                   <img src="img/product4.JPG" alt="WagBag Product View 4" class="thumbnail" onclick="changeImage('img/sandbox1.jpg')">
-                                   <img src="img/product5.JPG" alt="WagBag Product View 5" class="thumbnail" onclick="changeImage('img/sandbox2.jpg')">
-								   <img src="img/product1.JPG" alt="WagBag Product View 1" class="thumbnail" onclick="changeImage('img/papaya1.jpg')">
-                                   <img src="img/product2.JPG" alt="WagBag Product View 2" class="thumbnail" onclick="changeImage('img/papaya2.jpg')">
-                                   <img src="img/product3.JPG" alt="WagBag Product View 3" class="thumbnail" onclick="changeImage('img/papaya3.jpg')">
-                                   <img src="img/product4.JPG" alt="WagBag Product View 4" class="thumbnail" onclick="changeImage('img/onyx1.jpg')">
-                                   <img src="img/product5.JPG" alt="WagBag Product View 5" class="thumbnail" onclick="changeImage('img/onyx2.jpg')">
-								   <img src="img/product5.JPG" alt="WagBag Product View 5" class="thumbnail" onclick="changeImage('img/onyx3.jpg')">
-                                   <img src="img/bottle2.png" alt="WagBag Bottle Side View" class="thumbnail" onclick="changeImage('img/bottle2.png')">
+                                   <img src="img/blue1.jpg" alt="WagBag Product View 1" class="thumbnail" onclick="changeImage('img/blue1.jpg')">
+                                   <img src="img/blue2.jpg" alt="WagBag Product View 2" class="thumbnail" onclick="changeImage('img/blue2.jpg')">
+                                   <img src="img/blue3.jpg" alt="WagBag Product View 3" class="thumbnail" onclick="changeImage('img/blue3.jpg')">
+                                   <img src="img/sandbox1.jpg" alt="WagBag Product View 4" class="thumbnail" onclick="changeImage('img/sandbox1.jpg')">
+                                   <img src="img/sandbox2.jpg" alt="WagBag Product View 5" class="thumbnail" onclick="changeImage('img/sandbox2.jpg')">
+								   <img src="img/papaya1.jpg" alt="WagBag Product View 6" class="thumbnail" onclick="changeImage('img/papaya1.jpg')">
+                                   <img src="img/papaya2.jpg" alt="WagBag Product View 7" class="thumbnail" onclick="changeImage('img/papaya2.jpg')">
+                                   <img src="img/papaya3.jpg" alt="WagBag Product View 8" class="thumbnail" onclick="changeImage('img/papaya3.jpg')">
+                                   <img src="img/onyx1.jpg" alt="WagBag Product View 9" class="thumbnail" onclick="changeImage('img/onyx1.jpg')">
+                                   <img src="img/onyx2.jpg" alt="WagBag Product View 10" class="thumbnail" onclick="changeImage('img/onyx2.jpg')">
+								   <img src="img/onyx3.jpg" alt="WagBag Product View 11" class="thumbnail" onclick="changeImage('img/onyx3.jpg')">
                                </div>
                                <button class="scroll-btn next" onclick="scrollThumbnails('next')" id="nextBtn">›</button>
                            </div>
@@ -475,7 +473,6 @@
                           <div class="preorder-badge">PRE-ORDER</div>
                           <h1 class="product-title">The WagBag</h1>
                                                      <div class="price">
-                               <span class="original-price">$20.00</span>
                                <span>$15.00</span>
                            </div>
 
@@ -500,6 +497,16 @@
                                    <span class="info-label">Size:</span>
                                    <span class="info-value">Standard</span>
                                </div>
+                               <!-- Add color selection dropdown -->
+                               <div class="info-row">
+                                   <span class="info-label">View Color:</span>
+                                   <select id="colorSelect" onchange="updateColor(this.value)">
+                                       <option value="Denim">Denim</option>
+                                       <option value="Onyx">Onyx</option>
+                                       <option value="Papaya">Papaya</option>
+                                       <option value="Sand Bucket">Sandbox</option>
+                                   </select>
+                               </div>
                            </div>
 
                           <!-- Payment Options -->
@@ -507,9 +514,9 @@
                               <h6 style="margin-bottom: 15px; color: #dc3545;">Payment Options:</h6>
                               <div class="payment-option">
                                   <input type="radio" id="full-payment" name="payment" value="full" checked>
-                                  <label style="color: black;"for="full-payment">Full Payment - $12.00</label>
+                                  <label style="color: black;"for="full-payment">Full Payment - $15.00</label>
                               </div>
-							  <label style="color: black;">Color :</label>
+							  <label style="color: black;">Choose WagBag Color :</label>
                                                         <!-- Shopify Buy Button -->
                           <div id='product-component-1759175795788'></div>
                           
@@ -638,16 +645,15 @@
 			});
 			
 			// Color selection functionality
-			function updateColor() {
-				const selectedColor = document.getElementById('colorSelect').value;
+			function updateColor(selectedColor) {
 				console.log('Selected color:', selectedColor);
 				
 				// Define image sets for each color
 				const imageSets = {
-					'Onyx': ['img/all1.jpg', 'img/onyx1.jpg', 'img/onyx2.jpg', 'img/onyx3.jpg', 'img/all2.jpg'],
-					'Denim': ['img/all1.jpg', 'img/blue1.jpg', 'img/blue2.jpg', 'img/all2.jpg'],
-					'Papaya': ['img/all1.jpg', 'img/papaya1.jpg', 'img/papaya2.jpg', 'img/papaya3.jpg', 'img/all2.jpg'],
-					'Sand Bucket': ['img/all1.jpg', 'img/sandbox1.jpg', 'img/sandbox2.jpg', 'img/all2.jpg']
+					'Denim': ['img/all2.jpg', 'img/blue2.jpg', 'img/blue3.jpg', 'img/all1.jpg'],
+					'Onyx': ['img/all2.jpg', 'img/onyx1.jpg', 'img/onyx2.jpg', 'img/onyx3.jpg', 'img/all1.jpg'],
+					'Papaya': ['img/all2.jpg', 'img/papaya1.jpg', 'img/papaya2.jpg', 'img/papaya3.jpg', 'img/all1.jpg'],
+					'Sand Bucket': ['img/all2.jpg', 'img/sandbox1.jpg', 'img/sandbox2.jpg', 'img/sandbox3.jpg', 'img/all1.jpg']
 				};
 				
 				// Get the image set for the selected color
