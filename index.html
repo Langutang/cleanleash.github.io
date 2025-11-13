@@ -159,6 +159,59 @@
 				color: #000 !important;
 				font-size: 1.5rem;
 			}
+			
+			/* Mobile-specific fixes for intro section */
+			@media (max-width: 767px) {
+				.exploding-header {
+					height: auto !important;
+					min-height: 250px;
+					padding-bottom: 30px;
+					margin-bottom: 30px;
+				}
+				
+				.text-container {
+					position: relative !important;
+					padding: 20px 0;
+				}
+				
+				.exploding-text {
+					font-size: 2rem !important;
+					margin: 15px 0 !important;
+					display: block;
+				}
+				
+				.intro .content {
+					margin-bottom: 30px;
+				}
+				
+				/* Ensure image appears below text with proper spacing */
+				.intro-image-container {
+					width: 100% !important;
+					margin-top: 30px !important;
+					margin-bottom: 20px !important;
+					clear: both;
+				}
+				
+				.intro .row {
+					display: flex;
+					flex-direction: column;
+				}
+			}
+			
+			@media (max-width: 575px) {
+				.exploding-header {
+					min-height: 280px;
+					padding-bottom: 40px;
+				}
+				
+				.exploding-text {
+					font-size: 1.75rem !important;
+				}
+				
+				.intro-image-container {
+					margin-top: 40px !important;
+				}
+			}
 		</style>
 
 	</head>
@@ -178,7 +231,7 @@
 		<!-- navbar -->
 		<div id="navbar" class="navbar navbar-expand-lg">
 			<div class="container">
-				<a href="#" class="navbar-brand"><img src="img/logo.png" alt=""></a>
+				<a href="index.html" class="navbar-brand"><img src="img/logo.png" alt=""></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			        <i class="la la-bars"></i>
 			    </button>
@@ -214,7 +267,7 @@
 							<br>
 						</div>
 					</div>
-					<div style="width: 75%; margin: 0 auto; border-radius: 12px; overflow: hidden;">
+					<div class="intro-image-container" style="width: 75%; margin: 0 auto; border-radius: 12px; overflow: hidden;">
 						<img src="img/cleanleash.png" alt="" class="rounded-image fly-in-image fly-in" style="width: 100%; height: auto; display: block;">
 					</div>
 				</div>
