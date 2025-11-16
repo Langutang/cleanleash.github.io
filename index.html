@@ -164,30 +164,35 @@
 			@media (max-width: 767px) {
 				.exploding-header {
 					height: auto !important;
-					min-height: 250px;
-					padding-bottom: 30px;
-					margin-bottom: 30px;
+					min-height: 200px;
+					padding-bottom: 10px !important;
+					margin-bottom: 10px !important;
 				}
 				
 				.text-container {
 					position: relative !important;
-					padding: 20px 0;
+					padding: 10px 0 !important;
 				}
 				
 				.exploding-text {
 					font-size: 2rem !important;
-					margin: 15px 0 !important;
+					margin: 10px 0 !important;
 					display: block;
 				}
 				
 				.intro .content {
-					margin-bottom: 30px;
+					margin-bottom: 10px !important;
 				}
 				
-				/* Ensure image appears below text with proper spacing */
+				/* Remove extra spacing from br tag on mobile */
+				.intro .content br {
+					display: none;
+				}
+				
+				/* Ensure image appears below text with minimal spacing */
 				.intro-image-container {
 					width: 100% !important;
-					margin-top: 30px !important;
+					margin-top: 15px !important;
 					margin-bottom: 20px !important;
 					clear: both;
 				}
@@ -200,16 +205,17 @@
 			
 			@media (max-width: 575px) {
 				.exploding-header {
-					min-height: 280px;
-					padding-bottom: 40px;
+					min-height: 200px;
+					padding-bottom: 10px !important;
 				}
 				
 				.exploding-text {
 					font-size: 1.75rem !important;
+					margin: 8px 0 !important;
 				}
 				
 				.intro-image-container {
-					margin-top: 40px !important;
+					margin-top: 12px !important;
 				}
 			}
 		</style>
@@ -352,14 +358,14 @@
 						<div class="content content">
 							<i class="la la-envelope"></i>
 							<h5>Email</h5>
-							<p>product@cleanleashcompany.com</p>
+							<p>erica@cleanleashcompany.com</p>
 						</div>
 					</div>
 					<div class="col-md col-6">
 						<div class="content">
 							<i class="la la-instagram"></i>
 							<h5>Instagram</h5>
-							<p>@cleanleashcompany</p>
+							<p>@cleanleash_</p>
 						</div>
 					</div>
 					<div class="col-md col-6">
@@ -384,7 +390,7 @@
 						<ul class="social">
 							<li><a href=""><i class="la la-facebook"></i></a></li>
 							<li><a href=""><i class="la la-twitter"></i></a></li>
-							<li><a href=""><i class="la la-instagram"></i></a></li>
+							<li><a href="https://www.instagram.com/cleanleash_/?hl=am-et"><i class="la la-instagram"></i></a></li>
 							<li><a href=""><i class="la la-youtube"></i></a></li>
 						</ul>
 					</div>
@@ -409,14 +415,14 @@
 							<div class="icon"><i class="la la-envelope"></i></div>
 							<div class="text">
 								<span>Email</span>
-								<p>product@cleanleashcompany.com </p>
+								<p>erica@cleanleashcompany.com </p>
 							</div>
 						</div>
 						<div class="content">
 							<div class="icon"><i class="la la-map"></i></div>
 							<div class="text">
 								<span>Instagram</span>
-								<p> @cleanleashcompany </p>
+								<p> @cleanleash_ </p>
 							</div>
 						</div>
 					</div>
