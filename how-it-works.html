@@ -3,6 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-SBNVG11JP6"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-SBNVG11JP6');
+		</script>
 		<link rel="shortcut icon" href="img/favicon.ico">
 		<title>Preorder - Clean Leash Company</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -31,8 +39,9 @@
 				font-size: 1.5rem;
 			}
 		</style>
-		<script src="https://fast.wistia.com/embed/medias/x7akpqp0ge.jsonp" async></script>
-		<script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+		<script src="https://fast.wistia.com/player.js" async></script>
+		<script src="https://fast.wistia.com/embed/raownct55c.js" async type="module"></script>
+		<style>wistia-player[media-id='raownct55c']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/raownct55c/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
 	</head>
 	<body>
 		
@@ -127,11 +136,7 @@
                     <div class="ratio ratio-2x10" style="max-width: 80%; margin: 0 auto;">
                         <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
                             <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                                <div class="wistia_embed wistia_async_x7akpqp0ge videoFoam=true hidePlaylist=true hideTranscript=true hideWistiaLogo=true hideWistiaBranding=true hidePlaybar=true hideFullscreenButton=true hideVolumeControl=true hidePlayButton=true hideSeekBar=true hideTime=true hideThumbnail=true hideBranding=true hideLogo=true hideControls=true hideUI=true" style="height:100%;position:relative;width:100%">
-                                    <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                                        <img src="https://johnvjlang.wistia.com/medias/x7akpqp0ge/swatches/x7akpqp0ge.jpg" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-                                    </div>
-                                </div>
+                                <wistia-player media-id="raownct55c" aspect="1.7777777777777777" style="height:100%;position:relative;width:100%"></wistia-player>
                             </div>
                         </div>
                     </div>
@@ -229,11 +234,8 @@
 			// Close modal function
 			function closeModal() {
 				modal.style.display = 'none';
-				// Move video back to original container
-				var originalContainer = document.querySelector('.wistia_embed');
-				if (originalContainer && modalVideoWrapper.children.length > 0) {
-					originalContainer.appendChild(modalVideoWrapper.children[0]);
-				}
+				// Clear modal video wrapper
+				modalVideoWrapper.innerHTML = '';
 			}
 			
 			// Close modal when clicking X or outside
@@ -251,36 +253,51 @@
 				}
 			});
 			
-			// Wait for Wistia to load
-			window._wq = window._wq || [];
-			_wq.push({
-				id: 'x7akpqp0ge',
-				onReady: function(video) {
-					console.log('Wistia video ready:', video);
+			// Wait for Wistia player to load
+			document.addEventListener('DOMContentLoaded', function() {
+				// Wait for the custom element to be defined
+				if (typeof customElements !== 'undefined') {
+					customElements.whenDefined('wistia-player').then(function() {
+						setupVideoModal();
+					});
+				} else {
+					// Fallback if custom elements not available
+					setTimeout(setupVideoModal, 1000);
+				}
+			});
+			
+			function setupVideoModal() {
+				var player = document.querySelector('wistia-player[media-id="raownct55c"]');
+				if (player) {
+					console.log('Wistia player ready:', player);
 					
-					// Add click event to the video container
-					var videoContainer = document.querySelector('.wistia_embed');
-					if (videoContainer) {
-						videoContainer.style.cursor = 'pointer';
-						videoContainer.addEventListener('click', function(e) {
-							console.log('Video clicked, opening modal...');
-							e.preventDefault();
-							e.stopPropagation();
-							
-							// Move video to modal
-							if (videoContainer.children.length > 0) {
-								modalVideoWrapper.appendChild(videoContainer.children[0]);
+					// Add click event to the player
+					player.style.cursor = 'pointer';
+					player.addEventListener('click', function(e) {
+						console.log('Video clicked, opening modal...');
+						e.preventDefault();
+						e.stopPropagation();
+						
+						// Create new player for modal
+						var modalPlayer = document.createElement('wistia-player');
+						modalPlayer.setAttribute('media-id', 'raownct55c');
+						modalPlayer.setAttribute('aspect', '1.7777777777777777');
+						modalPlayer.style.width = '100%';
+						modalPlayer.style.height = '100%';
+						
+						modalVideoWrapper.innerHTML = '';
+						modalVideoWrapper.appendChild(modalPlayer);
+						
+						// Show modal
+						modal.style.display = 'block';
+						
+						// Play video when modal opens
+						setTimeout(function() {
+							if (modalPlayer.play) {
+								modalPlayer.play();
 							}
-							
-							// Show modal
-							modal.style.display = 'block';
-							
-							// Play video
-							if (video && video.play) {
-								video.play();
-							}
-						});
-					}
+						}, 200);
+					});
 					
 					// Also add click event to the wrapper
 					var wrapper = document.querySelector('.wistia_responsive_wrapper');
@@ -291,23 +308,29 @@
 							e.preventDefault();
 							e.stopPropagation();
 							
-							// Move video to modal
-							var videoContainer = document.querySelector('.wistia_embed');
-							if (videoContainer && videoContainer.children.length > 0) {
-								modalVideoWrapper.appendChild(videoContainer.children[0]);
-							}
+							// Create new player for modal
+							var modalPlayer = document.createElement('wistia-player');
+							modalPlayer.setAttribute('media-id', 'raownct55c');
+							modalPlayer.setAttribute('aspect', '1.7777777777777777');
+							modalPlayer.style.width = '100%';
+							modalPlayer.style.height = '100%';
+							
+							modalVideoWrapper.innerHTML = '';
+							modalVideoWrapper.appendChild(modalPlayer);
 							
 							// Show modal
 							modal.style.display = 'block';
 							
-							// Play video
-							if (video && video.play) {
-								video.play();
-							}
+							// Play video when modal opens
+							setTimeout(function() {
+								if (modalPlayer.play) {
+									modalPlayer.play();
+								}
+							}, 200);
 						});
 					}
 				}
-			});
+			}
 		</script>
 		
 	</body>
