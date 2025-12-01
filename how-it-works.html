@@ -233,9 +233,26 @@
 			
 			// Close modal function
 			function closeModal() {
+				// Pause modal player before closing
+				var modalPlayer = modalVideoWrapper.querySelector('wistia-player');
+				if (modalPlayer && modalPlayer.pause) {
+					modalPlayer.pause();
+				}
+				
 				modal.style.display = 'none';
 				// Clear modal video wrapper
 				modalVideoWrapper.innerHTML = '';
+				
+				// Show and restore original player
+				var originalPlayer = document.querySelector('wistia-player[media-id="raownct55c"]');
+				if (originalPlayer) {
+					originalPlayer.style.display = '';
+					originalPlayer.style.visibility = '';
+					// Ensure original player is paused
+					if (originalPlayer.pause) {
+						originalPlayer.pause();
+					}
+				}
 			}
 			
 			// Close modal when clicking X or outside
@@ -271,12 +288,37 @@
 				if (player) {
 					console.log('Wistia player ready:', player);
 					
+					// Helper function to pause all videos
+					function pauseAllVideos() {
+						// Pause all video elements
+						var allVideos = document.querySelectorAll('video');
+						allVideos.forEach(function(video) {
+							if (!video.paused) {
+								video.pause();
+							}
+						});
+						// Pause all wistia players
+						var allPlayers = document.querySelectorAll('wistia-player');
+						allPlayers.forEach(function(p) {
+							if (p.pause) {
+								p.pause();
+							}
+						});
+					}
+					
 					// Add click event to the player
 					player.style.cursor = 'pointer';
 					player.addEventListener('click', function(e) {
 						console.log('Video clicked, opening modal...');
 						e.preventDefault();
 						e.stopPropagation();
+						
+						// Pause all videos first
+						pauseAllVideos();
+						
+						// Hide the original player
+						player.style.display = 'none';
+						player.style.visibility = 'hidden';
 						
 						// Create new player for modal
 						var modalPlayer = document.createElement('wistia-player');
@@ -307,6 +349,13 @@
 							console.log('Wrapper clicked, opening modal...');
 							e.preventDefault();
 							e.stopPropagation();
+							
+							// Pause all videos first
+							pauseAllVideos();
+							
+							// Hide the original player
+							player.style.display = 'none';
+							player.style.visibility = 'hidden';
 							
 							// Create new player for modal
 							var modalPlayer = document.createElement('wistia-player');
